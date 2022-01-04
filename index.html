@@ -1,0 +1,239 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Untitled 1</title>
+  <script type="text/javascript" src="./arr.js"></script>
+</head>
+<body>
+  <div style="margin:2%">
+    <div id="test" style="width:800px;height:800px;background-color:#cbdad0d9">
+      <canvas id="container" onmousedown="mousedown()"></canvas>
+    </div>
+    <div>
+      <h2>我对计算机专业的认识</h2>
+      <span>
+        我对计算机专业的认识：计算机专业是一门研究信息是如何表示和存储、如何发送和接收、如何处理分析的一门学科。信息的概念很广，它可以包含我们人类能感知的信号（比如图像、声音、文字）和人类不能感知的信号（无线信号）。计算机还研究什么问题是可以计算的，什么问题是不可以计算的，什么问题是可以有效解决的，什么问题是目前无法解决的。计算机专业渗透在我们生活的方方面面，通过“计算机+”，构建了许多交叉学科，也被称之为“新工科”，如工业智能化，智慧医疗，智慧教育，智慧金融，智慧交通等。计算机专业的核心是构造，通过构造，创作一个数字世界，能够以统一的方式处理信息。计算机学科的知识的力量是强大的，需要学生有着极强的综合素质，也需要学生用这门课的知识引领中国的信息化，智能化，乃至改变整个世界。
+我的学业规划：目前作为一名大一学生，我的目标是上好每一门基础课，尤其是高等数学，线性代数，大学物理，程序设计基础，大学计算机基础这样的基础课，厚基础才能为以后的专业发展打下基础。如果我在之后的学业中选择了计算机相关专业，如计算机科学与技术，软件工程，物联网等，我会进一步加强自己在计算机编程，计算机组成结构，计算机操作系统等方面的能力，也会尽力参加一些竞赛，争取能够进一步深造。
+      </span>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var canvas = document.getElementById("container");
+    canvas.width = 800;
+    canvas.height = 800;
+    var y;
+    var x;
+    var context = canvas.getContext("2d");
+    var subject = [];
+    var size = 20;
+    var ratio = 1;
+    var a, b,c,d;
+    init();
+    line();
+    head();
+    function mousedown(event) {
+      console.log("down")
+      f();
+      console.log("X:" + x + "Y:" + y)
+      for (var i = 0; i < subject.length; i++) {
+        context.beginPath();
+        var len = subject[i].name.length;
+        context.rect(subject[i].X, subject[i].Y, len * size, size);
+        if (context.isPointInPath(x, y)) {
+          if(subject[i].url){
+          window.location.href=subject[i].url;
+          }
+          console.log("选中：" + subject[i].name)
+        }
+        context.closePath();
+      }
+    }
+    function f() {
+      var ev2 = event || window.event;
+      var x1 = ev2.PageX || ev2.clientX;
+      var y1 = ev2.PageY || ev2.clientY;
+      x1 += document.documentElement.scrollLeft || document.body.scrollLeft;
+      y1 += document.documentElement.scrollTop || document.body.scrollTop;
+      var x2 = canvas.offsetLeft;
+      var y2 = canvas.offsetTop;
+      //var y2 = $(n).offset().top;
+      x = x1 - x2;
+      y = y1 - y2
+
+    }
+    function init() {
+
+      subject[0] = { name: "计算机课程", X: 250, Y: 20, url: "" };
+      subject[1] = { name: "高等数学", X: 20, Y: 60, url: "11791614_工科数学分析基础教学辅导书++上册_p448.rar" };
+      subject[2] = { name: "线性代数", X: 160, Y: 60, url: "./西交线性代数辅导书.rar" };
+      subject[3] = { name: "程序设计基础", X: 300, Y: 60, url: "http://c.biancheng.net/view/1606.html" };
+      subject[4] = { name: "计算机科学技术导论", X: 470, Y: 60, url: "https://bb.xjtu.edu.cn/webapps/blackboard/content/listContent.jsp?course_id=_21655_1&content_id=_334690_1&mode=reset" };
+      subject[5] = { name: "大学物理", X: 150, Y: 150, url: "https://www.bilibili.com/video/av96101219/" };
+      subject[6] = { name: "离散数学", X: 300, Y: 150, url: "./离散数学耿素云屈婉玲编著(1).rar" };
+      subject[7] = { name: "面向对象程序设计", X: 450, Y: 150, url: "https://www.bilibili.com/video/BV1bE411T7Xd/" };
+      subject[8] = { name: "电路", X: 100, Y: 240, url: "./1电路 第五版.pdf" };
+      subject[9] = { name: "模拟电子技术", X: 200, Y: 240, url: "./模拟电子技术PPT.zip" };
+      subject[10] = { name: "概率统计与随机过程", X: 400, Y: 240, url: "./概率论与数理统计教材.rar" };
+      subject[11] = { name: "数据结构与算法", X: 550, Y: 300, url: "https://zhuanlan.zhihu.com/p/279209853" };
+      subject[12] = { name: "数字电子技术", X: 25, Y: 400, url: "" };
+      subject[13] = { name: "电子技术实验", X: 225, Y: 400, url: "https://www.bilibili.com/video/BV1a741177sD/" };
+      subject[14] = { name: "数学建模", X: 400, Y: 400, url: "./数学建模方法及其应用.rar" };
+      subject[15] = { name: "计算机组成结构", X: 25, Y: 500, url: "https://www.bilibili.com/video/BV1VQ4y1f7B5/" };
+      subject[16] = { name: "编译原理", X: 280, Y: 500, url: "https://zhuanlan.zhihu.com/p/130702001" };
+      subject[17] = { name: "计算机网络原理", X: 425, Y: 500, url: "https://www.bilibili.com/video/BV1gb411k7gd/" };
+      subject[18] = { name: "操作系统原理", X: 525, Y: 550, url: "https://www.icourse163.org/course/XJTU-1003409001?tid=1003634003" };
+      subject[19] = { name: "数据库系统", X: 625, Y: 600, url: "https://www.bilibili.com/video/BV1PJ411F78b/" };
+      subject[20] = { name: "软件工程", X: 625, Y: 700, url: "https://www.icourse163.org/course/PKU-1003177002" };
+      subject[21] = { name: "计算机系统综合", X: 225, Y: 600, url: "https://www.icourse163.org/course/SEU-1003566002?from=searchPage" };
+
+      context.font = size + 'px sans-serif';
+      context.textBaseline = 'top';
+      context.font = size * ratio + 'px sans-serif';
+      for (var i = 0; i < subject.length; i++) {
+        context.fillText(subject[i].name, subject[i].X, subject[i].Y);
+      }
+    }
+    function line() {
+      var len = subject[1].name.length;
+
+      //高等数学->大学物理
+      context.moveTo(subject[1].X + (len * size * ratio) / 2, subject[1].Y + size);
+      context.lineTo(subject[1].X + (len * size * ratio) / 2, subject[5].Y - 20);
+      context.lineTo(subject[2].X + (len * size * ratio) / 2, subject[5].Y - 20);
+      //高等数学->数学建模
+      context.moveTo(subject[1].X + (len * size * ratio) / 2, subject[1].Y + size);
+      context.lineTo(subject[1].X + (len * size * ratio) / 2, subject[1].Y + 250);
+      context.lineTo(subject[1].X + 430, subject[1].Y + 250);
+      context.lineTo(subject[1].X + 430, subject[1].Y + 330);
+      //概率统计与随机->数学建木
+      context.moveTo(subject[1].X + 430, subject[5].Y + 110);
+      context.lineTo(a=subject[1].X + 430, b=subject[1].Y + 330);
+      head(a,b);
+      // context.lineTo(subject[2].X+(len*size*ratio)/2,subject[5].Y-30);
+      ///线性代数->大学物理
+      context.moveTo(subject[2].X + (len * size * ratio) / 2, subject[2].Y + size);
+      context.lineTo(a = subject[2].X + (len * size * ratio) / 2, b = subject[5].Y);
+      head(a,b);
+      //线性代数->概率统计
+      context.moveTo(subject[2].X + (len * size * ratio) / 2, subject[5].Y - 30);
+      context.lineTo(subject[2].X + 110, subject[5].Y - 30);
+      context.lineTo(subject[2].X + 110, subject[5].Y + 60);
+      context.lineTo(subject[2].X + 350, subject[5].Y + 60);
+      context.lineTo(a=subject[2].X + 350, b=subject[5].Y + 80);
+      head(a,b);
+      //程序设计基础->面向对象程序设计
+      context.moveTo(subject[3].X + (len * size * ratio) / 2, subject[3].Y + size);
+      context.lineTo(subject[3].X + (len * size * ratio) / 2, subject[3].Y + 50);
+      context.lineTo(subject[7].X + (len * size * ratio) / 2, subject[3].Y + 50);
+      context.lineTo(a=subject[7].X + (len * size * ratio) / 2, b=subject[7].Y);
+      head(a,b);
+      //大学物理->电路
+      context.moveTo(a=subject[5].X, b=subject[5].Y + 5);
+      context.lineTo(c=subject[8].X + (len * size * ratio) / 2, d=subject[8].Y);
+      to(a,b,c,d)
+      //电路->模拟电子技术
+      context.moveTo(a=subject[8].X + 50, b=subject[8].Y + 5);
+      context.lineTo(c=subject[9].X, d=subject[8].Y + 5);
+      to(a,b,c,d)
+      //电路->数字电子技术
+      context.moveTo(subject[8].X + 10, subject[8].Y + 15);
+      context.lineTo(a=subject[8].X + 10, b=subject[12].Y);
+      head(a,b);
+      //电路->电子技术实验
+      context.moveTo(a=subject[8].X + 20, b=subject[8].Y + 25);
+      context.lineTo(c=subject[13].X + 10, d=subject[13].Y);
+      to(a,b,c,d,0.05)
+      //离散数学->编译原理
+      context.moveTo(subject[6].X + (len * size * ratio) / 2 + 15, subject[6].Y + size);
+      context.lineTo(a=subject[6].X + (len * size * ratio) / 2 + 15, b=subject[6].Y + 350);
+      head(a,b);
+      //面向对象->数据结构与算法
+      context.moveTo(subject[7].X + 160, subject[7].Y + 10);
+      context.lineTo(subject[11].X + 130, subject[7].Y + 10);
+      context.lineTo(a=subject[11].X + 130, b=subject[11].Y);
+      head(a,b);
+      //数字电子技术->计算机组成结构
+      context.moveTo(subject[12].X + (len * size * ratio) / 2 + 35, subject[12].Y + size);
+      context.lineTo(a=subject[12].X + (len * size * ratio) / 2 + 35, b=subject[12].Y + 100);
+      head(a,b);
+      //数字电子技术->计算机系统综合
+      context.moveTo(a=subject[12].X + (len * size * ratio) / 2 + 40, b=subject[12].Y + size);
+      context.lineTo(c=subject[21].X + (len * size * ratio) / 2 + 35, d=subject[21].Y);
+      to(a,b,c,d,0.02)
+      //计算机组成结构->计算机系统综合
+      context.moveTo(subject[12].X + (len * size * ratio) / 2 + 35, subject[15].Y + size);
+      context.lineTo(subject[21].X + (len * size * ratio) / 2 + 35, subject[21].Y);
+      //编译原理->计算机系统综合
+      context.moveTo(subject[16].X + (len * size * ratio) / 2 + 35, subject[16].Y + size);
+      context.lineTo(subject[21].X + (len * size * ratio) / 2 + 35, subject[21].Y);
+      //计算机网络->计算机系统综合
+      context.moveTo(subject[17].X + (len * size * ratio) / 2 + 35, subject[17].Y + size);
+      context.lineTo(subject[21].X + (len * size * ratio) / 2 + 35, subject[21].Y);
+      //操作系统原理->计算机系统综合
+      context.moveTo(subject[18].X, subject[18].Y + 10);
+      context.lineTo(subject[21].X + (len * size * ratio) / 2 + 35, subject[21].Y);
+      //数据结构与算法->数据库系统
+      context.moveTo(subject[11].X + 130, subject[11].Y + 15);
+      context.lineTo(a=subject[11].X + 130, b=subject[19].Y);
+      head(a,b);
+      //数据结构与算法->编译原理
+      context.moveTo(subject[11].X + 130, subject[11].Y + 150);
+      context.lineTo(subject[6].X + (len * size * ratio) / 2 + 15, subject[11].Y + 150);
+     
+      //数据结构与算法-》计算机系统综合
+      context.moveTo(subject[11].X - 80, subject[11].Y + 150);
+      context.lineTo(subject[21].X + (len * size * ratio) / 2 + 35, subject[21].Y);
+      //数据结构与算法-计算机网络原理
+      context.moveTo(subject[11].X - 50, subject[11].Y + 150);
+      context.lineTo(a=subject[17].X + (len * size * ratio) / 2 + 35,b=subject[17].Y);
+      head(a,b);
+      //数据结构与算法-》操作系统原理
+      context.moveTo(a=subject[11].X + 130, b=subject[18].Y + 10);
+      context.lineTo(c=subject[18].X + 120, d=subject[18].Y + 10);
+      to(a,b,c,d)
+      //数据库系统-软件工程
+      context.moveTo(subject[19].X + 50, subject[19].Y + 20);
+      context.lineTo(a=subject[20].X + 50, b=subject[20].Y);
+      
+      head(a,b);
+      //操作系统原理-软件工程
+      context.moveTo(a=subject[18].X + 50, b=subject[18].Y + 20);
+      context.lineTo(c=subject[20].X + 30, d=subject[20].Y);
+      to(a,b,c,d,0.05)
+     
+    }
+    function head(a,b) {
+      context.lineWidth = 2;
+      context.stroke();
+      var a1 = new window.mapleque.arrow();
+      a1.set({ x: a, y: b - 10 }, { x: a, y: b });
+      a1.setPara({
+        arrow_size: 0.5,
+        arrow_sharp: 0.5
+      })
+      a1.paint(context);
+    }
+    function to(a,b,c,d,t){
+      context.lineWidth = 2;
+      context.stroke();
+      var a1 = new window.mapleque.arrow();
+      a1.set({ x: a, y: b}, { x: c, y: d });
+      if(t){
+        a1.setPara({
+        arrow_size: t,
+        arrow_sharp:t
+      })
+      }else{
+        a1.setPara({
+        arrow_size: 0.1,
+        arrow_sharp: 0.1
+      })
+      }
+      a1.paint(context);
+    }
+  </script>
+</body>
+
+</html>
